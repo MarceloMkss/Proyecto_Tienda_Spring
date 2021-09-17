@@ -42,7 +42,7 @@
 		</c:forEach>
 	</div>
 	<div class="row">
-		<a href="api/productos/nuevo" class="btn btn-warning btn-large"> Nuevo
+		<a href="productos" class="btn btn-warning btn-large"> Nuevo
 		</a>
 	</div>
 

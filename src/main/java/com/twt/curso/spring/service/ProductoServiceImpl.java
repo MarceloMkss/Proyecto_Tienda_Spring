@@ -22,17 +22,47 @@ public class ProductoServiceImpl implements ProductoService {
 	
      
     @Override
+    @Transactional(readOnly = true)
     public List<Producto> getTodosProductos() {
        return productoRepositorio.getAll();
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+	public Producto getProductosPorId(Integer id) {
+		
+		return productoRepositorio.getById(id);
+	}
+    
 
 
 	@Override
-	public Producto crearProducto(Producto p) {
+	@Transactional
+	public Producto saveProducto(Producto producto) {
 
-		return productoRepositorio.create(p);
+		return productoRepositorio.create(producto);
 	}
-    
+
+
+	@Override
+	@Transactional
+	public void borrar(Integer id) {
+
+		productoRepositorio.delete(id);	
+//		if (p != null) {
+//			productoRepositorio.delete(id);
+//		}//		
+//		return p;				
+	}
+
+//	@Override
+//	public Producto AtualizarProducto(Producto producto) {
+//		
+//		return productoRepositorio.update(producto);
+//	}
+
+
+	
    
 	
 }

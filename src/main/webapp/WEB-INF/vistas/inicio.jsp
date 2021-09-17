@@ -10,13 +10,13 @@
 			<div class="container">
 				<h1> ${ saludo } </h1>
 				<p>  ${ linea1 } </p>
+				<p> ${productos} </p>
 			</div>
 		</div>
 	</section>
 	
 	<a href="productos/nuevo" class="btn btn-primary btn-lg active" 
-	   role="button">alta Productos</a>
+	   role="button">Productos</a>
 
 	   
-
 <%@ include file="/WEB-INF/vistas/includes/pie.jsp"%>

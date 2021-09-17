@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.twt.curso.spring.entity.Producto;
 import com.twt.curso.spring.service.ProductoService;
@@ -24,9 +25,7 @@ public class ProductoController {
 	public ProductoController() {
 		System.out.println("... iniciando ProductController");
 	}
-
-	
-
+				
 	@GetMapping("/nuevo")
 	public String nuevo(Model model) {
 		Producto p = new Producto();
@@ -34,7 +33,7 @@ public class ProductoController {
 
 		return "crear-producto";
 	}
-
+	
 	@PostMapping("/nuevo")
 	public String procesarNuevo(@ModelAttribute("nuevoProducto") @Valid Producto nuevoProducto,
 			BindingResult bindingResult) {
@@ -43,9 +42,17 @@ public class ProductoController {
 			return "crear-producto";
 		}
 
-		productoService.crearProducto(nuevoProducto);
+		productoService.saveProducto(nuevoProducto);
 		return "redirect:/productos/nuevo";
 		
+	}
+	
+	@GetMapping(value = "/producto/id")
+	public String borrarProducto(
+			@RequestParam("id") Integer productId) {
+	
+		productoService.borrar(productId);
+		return "redirect:/productos"; 		
 	}
 
 }
